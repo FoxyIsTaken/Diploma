@@ -1,18 +1,16 @@
 library("nets")
 data<-as.matrix(data_netN)
-Nets_integral<-nets::nets(data ,lambda=0.0001 ) 
+Nets_integral<-nets::nets(data ,lambda=0.0001 ) # лямбда подбирается с помощью информационных критериев Акайке и Байеса из предложенного списка 
+lambda<-c(0.0001, 0.001, 0.01, 0.1, 0.15, 0.2, 0.4, 0.6, 0.8, 1, 2 )
+
 # В своем исследовании я использовал алгоритм Nets, его более подробное описание и этапы выполненния есть по ссылке 
 (http://www.econ.upf.edu/~cbrownlees/)
+# Построение сети взаимосвязей по Гранжеру. Сеть одновременных взаимосвязей стоиться, использую эту же фун-ю.
 plot(net1, vertex.shape="circle", vertex.label.font=7, vertex.label.color="black",
      vertex.label.cex=.8,vertex.size=node.size, edge.width=igraph::edge.betweenness(net)*0.5, 
      edge.color="grey", edge.arrow.size=0.5 ,vertex.color=pal2,, 
      main="Granger linkages, 01.01.2005-01.12.2021")
      
-plot(net2, vertex.shape="circle", vertex.label.font=7, vertex.label.color="Black",
-vertex.label.cex=.7, vertex.size=node.size, edge.width=igraph::edge.betweenness(net)*0.05,
-edge.color="grey70", edge.arrow.size=0.2, vertex.color=pal2, 
-main="Contemporaneous linkages, 01.01.2005-01.12.2021")
-
 # Также я расичтал некоторые значения метрик центральности графа
 
 deg1 <-  degree(net1, v = V(net1), mode = c("all")) 
