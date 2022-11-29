@@ -14,6 +14,7 @@
 
 <img width="410" alt="image" src="https://user-images.githubusercontent.com/101235293/204446130-09871b96-6b36-47b3-a468-aa74b39eeaad.png">
 <img width="443" alt="image" src="https://user-images.githubusercontent.com/101235293/204446162-6b25524f-c901-4c96-a3d2-069c783293fe.png">
+
 ***
 Затем были произведены расчеты некоторых показателей описывющих постороенные графы.
 На их онсове были получены результаты:
