@@ -1,0 +1,49 @@
+library("nets")
+data<-as.matrix(data_netN)
+Nets_integral<-nets::nets(data ,lambda=0.0001 ) 
+# В своем исследовании я использовал алгоритм Nets, его более подробное описание и этапы выполненния есть по ссылке 
+(http://www.econ.upf.edu/~cbrownlees/)
+plot(net1, vertex.shape="circle", vertex.label.font=7, vertex.label.color="black",
+     vertex.label.cex=.8,vertex.size=node.size, edge.width=igraph::edge.betweenness(net)*0.5, 
+     edge.color="grey", edge.arrow.size=0.5 ,vertex.color=pal2,, 
+     main="Granger linkages, 01.01.2005-01.12.2021")
+     
+plot(net2, vertex.shape="circle", vertex.label.font=7, vertex.label.color="Black",
+vertex.label.cex=.7, vertex.size=node.size, edge.width=igraph::edge.betweenness(net)*0.05,
+edge.color="grey70", edge.arrow.size=0.2, vertex.color=pal2, 
+main="Contemporaneous linkages, 01.01.2005-01.12.2021")
+
+# Также я расичтал некоторые значения метрик центральности графа
+
+deg1 <-  degree(net1, v = V(net1), mode = c("all")) 
+deg1
+write.csv(deg1, 'deg1.csv')
+hist(deg1, col="red")
+bet1 <-  betweenness(net1, v = V(net1), directed = TRUE)
+bet1
+eig1 <- eigen_centrality(net1, directed = TRUE)
+eig1
+hist(bet1, col="red",xlim= c(0,10),las = 1,  breaks = 10)
+nonzero.coef(fit, s = step)
+core_periphery(net1, method = "rk1_dc", iter = 5000)
+table(coreness(net1))
+make_k_core_plot <- function (net1) {
+  lay1 <- layout.fruchterman.reingold(net1)
+  plot(net1, 
+       vertex.color = graph.coreness(net1), 
+       layout=lay1,
+       vertex.size=V(net1)$vertex.size,
+       asp=6/19,
+       margin=-0.15)
+} 
+make_k_core_plot(simplify(net1))
+make_k_core_plot <- function (net1) {
+  lay1 <- layout.fruchterman.reingold(net1)
+  plot(net1, 
+       vertex.color = graph.coreness(net1), 
+       vertex.label.color="black"
+       layout=lay1,
+       vertex.size=V(net1)$vertex.size,
+       asp=6/19,
+       margin=-0.15)
+} 
